@@ -127,12 +127,12 @@ public class CameraManager : MonoBehaviour
 
         transform.position = Player.transform.position + transform.rotation * Vector3.back * CurrentDis;
 
-        /*if (CurrentDis < Data.OffsetTriggerDis)
+        if (CurrentDis < Data.OffsetTriggerDis)
         {
             Vector3 Dir = Quaternion.AngleAxis(90,transform.up)*transform.forward;
             float Offset = (1 - (CurrentDis - Data.MinDistanceToPlayer) / (Data.OffsetTriggerDis - Data.MinDistanceToPlayer))*Data.MaxOffset;
             transform.position += Dir * Offset;
-        }*/
+        }
 
         if ( transform.position.y < Player.transform.position.y)
         {

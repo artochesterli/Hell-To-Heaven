@@ -79,7 +79,6 @@ public class PlayerController : MonoBehaviour
         if (Physics.BoxCast(transform.position, new Vector3(WallCheckBodySize.x/2, WallCheckBodySize.y/2, 0.01f), transform.forward, out hit, transform.rotation, WallCheckDis + WallCheckOffset, WallLayer))
         {
             WallDis = hit.distance - WallCheckOffset;
-            Debug.Log(WallDis);
             if(WallDis < WallHitDis)
             {
                 Wall = hit.collider.gameObject;
