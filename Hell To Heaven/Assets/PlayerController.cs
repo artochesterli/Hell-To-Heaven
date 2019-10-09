@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
 
         if (Physics.BoxCast(transform.position,new Vector3(GroundCheckBodySize.x/2, 0.01f, GroundCheckBodySize.y/2), Vector3.down, out hit, Quaternion.Euler(0, 0, 0), GroundCheckDis + GroundCheckOffset, GroundLayer))
         {
-            GroundDis = transform.position.y - GroundCheckOffset - hit.point.y;
+            GroundDis = hit.distance - GroundCheckOffset;
             if (GroundDis < GroundHitDis)
             {
                 Ground = hit.collider.gameObject;
