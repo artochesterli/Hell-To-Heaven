@@ -134,9 +134,9 @@ public class CameraManager : MonoBehaviour
             transform.position += Dir * Offset;
         }*/
 
-        /*if ( transform.position.y < Player.transform.position.y)
+        if ( transform.position.y < Player.transform.position.y)
         {
             transform.position += Vector3.up * (Player.transform.position.y - transform.position.y);
-        }*/
+        }
     }
 }
