@@ -339,7 +339,7 @@ public class Fall : PlayerActionState
             return;
         }
 
-        if (AbleToGlide() && PlayerMove(false))
+        if (PlayerMove(false) && AbleToGlide())
         {
             TransitionTo<Glide>();
             return;
