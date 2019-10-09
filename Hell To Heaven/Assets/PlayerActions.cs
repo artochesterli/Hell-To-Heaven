@@ -72,6 +72,11 @@ public abstract class PlayerActionState : FSM<PlayerActions>.State
         return Input.GetKey(KeyCode.LeftControl);
     }
 
+    protected bool InputGlide()
+    {
+        return Input.GetKey(KeyCode.Space);
+    }
+
     protected bool AttachToWall()
     {
         var Controller = Context.gameObject.GetComponent<PlayerController>();
@@ -123,7 +128,7 @@ public abstract class PlayerActionState : FSM<PlayerActions>.State
     {
         var Controller = Context.gameObject.GetComponent<PlayerController>();
 
-        return Controller.MoveSpeed.y <= 0 && !Controller.Ground;
+        return Controller.MoveSpeed.y <= 0 && !Controller.Ground && InputGlide();
     }
 
     protected bool PlayerInAir()
@@ -357,7 +362,7 @@ public class Glide : PlayerActionState
     {
         base.Update();
         GlideEffect();
-        if (!PlayerMove(true))
+        if (!PlayerMove(true) || !AbleToGlide())
         {
             TransitionTo<Fall>();
             return;

@@ -73,7 +73,7 @@ public class CameraManager : MonoBehaviour
 
         RaycastHit Hit;
 
-        if (Physics.Raycast(Player.transform.position, transform.position - Player.transform.position, out Hit, (transform.position - Player.transform.position).magnitude, Data.Blocks))
+        if (Physics.Raycast(Player.transform.position, transform.position - Player.transform.position, out Hit, Data.MaxDistanceToPlayer+Data.MinDisFromBlock, Data.Blocks))
         {
             if(Hit.distance < Data.MinDisFromBlock)
             {
