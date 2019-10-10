@@ -7,9 +7,9 @@ public class CameraData : MonoBehaviour
     public float MaxDistanceToPlayer;
     public float MinDistanceToPlayer;
     public float DisChangeSpeed;
-    public float OffsetTriggerDis;
-    public float MaxOffset;
     public float MinDisFromBlock;
+    public float NearWallDeduction;
+    public float NearWallThreshold;
     public float VerticalOffsetChangeSpeed;
     public float RotationSpeed;
 

@@ -995,6 +995,8 @@ MonoBehaviour:
   OffsetTriggerDis: 3
   MaxOffset: 1
   MinDisFromBlock: 1
+  NearWallDeduction: 1.5
+  NearWallThreshold: 1
   VerticalOffsetChangeSpeed: 0
   RotationSpeed: 180
   NormalFieldOfView: 60

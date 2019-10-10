@@ -75,6 +75,7 @@ public class CameraManager : MonoBehaviour
 
         if (Physics.Raycast(Player.transform.position, transform.position - Player.transform.position, out Hit, Data.MaxDistanceToPlayer+Data.MinDisFromBlock, Data.Blocks))
         {
+
             if(Hit.distance < Data.MinDisFromBlock)
             {
                 CurrentTargetDis = Hit.distance;
@@ -83,27 +84,17 @@ public class CameraManager : MonoBehaviour
             {
                 CurrentTargetDis = Hit.distance - Data.MinDisFromBlock;
             }
-            
+
+            if (CurrentTargetDis < Data.NearWallThreshold)
+            {
+                Debug.Log("ttt");
+                CurrentTargetDis -= Data.NearWallDeduction;
+            }
+
         }
         else
         {
             CurrentTargetDis = Data.MaxDistanceToPlayer;
-            /*float BackDis = Data.MaxDistanceToPlayer - CurrentDis;
-
-            RaycastHit BackHit;
-
-            if (Physics.Raycast(Player.transform.position + transform.rotation * Vector3.back * CurrentDis, transform.position - Player.transform.position, out BackHit, BackDis, Data.Blocks))
-            {
-                CurrentTargetDis = (Player.transform.position - BackHit.point).magnitude;
-                if (CurrentTargetDis < Data.MinDistanceToPlayer)
-                {
-                    CurrentTargetDis = Data.MinDistanceToPlayer;
-                }
-            }
-            else
-            {
-                
-            }*/
         }
 
         if (CurrentDis < CurrentTargetDis)
@@ -126,13 +117,6 @@ public class CameraManager : MonoBehaviour
         }
 
         transform.position = Player.transform.position + transform.rotation * Vector3.back * CurrentDis;
-
-        if (CurrentDis < Data.OffsetTriggerDis)
-        {
-            Vector3 Dir = Quaternion.AngleAxis(90,transform.up)*transform.forward;
-            float Offset = (1 - (CurrentDis - Data.MinDistanceToPlayer) / (Data.OffsetTriggerDis - Data.MinDistanceToPlayer))*Data.MaxOffset;
-            transform.position += Dir * Offset;
-        }
 
         if ( transform.position.y < Player.transform.position.y)
         {
